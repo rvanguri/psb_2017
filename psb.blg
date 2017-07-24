@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: psb.aux
+The style file: ws-procs11x85.bst
+Database file #1: ws-pro-sample.bib
+<ws-procs11x85.bst>
+World Scientific's Bibliography Style File for Proceedings
+You've used 19 entries,
+            2822 wiz_defined-function locations,
+            772 strings with 7082 characters,
+and the built_in function-call counts, 3623 in all, are:
+= -- 343
+> -- 134
+< -- 5
++ -- 53
+- -- 34
+* -- 277
+:= -- 531
+add.period$ -- 20
+call.type$ -- 19
+change.case$ -- 8
+chr.to.int$ -- 0
+cite$ -- 19
+duplicate$ -- 184
+empty$ -- 364
+format.name$ -- 34
+if$ -- 872
+int.to.chr$ -- 0
+int.to.str$ -- 19
+missing$ -- 17
+newline$ -- 61
+num.names$ -- 25
+pop$ -- 60
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 106
+stack$ -- 0
+substring$ -- 146
+swap$ -- 69
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 2
+type$ -- 0
+warning$ -- 0
+while$ -- 35
+width$ -- 21
+write$ -- 159
