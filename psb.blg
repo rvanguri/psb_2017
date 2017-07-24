@@ -5,44 +5,44 @@ The style file: ws-procs11x85.bst
 Database file #1: ws-pro-sample.bib
 <ws-procs11x85.bst>
 World Scientific's Bibliography Style File for Proceedings
-You've used 19 entries,
+You've used 2 entries,
             2822 wiz_defined-function locations,
-            772 strings with 7082 characters,
-and the built_in function-call counts, 3623 in all, are:
-= -- 343
-> -- 134
-< -- 5
-+ -- 53
-- -- 34
-* -- 277
-:= -- 531
-add.period$ -- 20
-call.type$ -- 19
-change.case$ -- 8
+            665 strings with 5432 characters,
+and the built_in function-call counts, 603 in all, are:
+= -- 59
+> -- 34
+< -- 0
++ -- 12
+- -- 10
+* -- 48
+:= -- 90
+add.period$ -- 2
+call.type$ -- 2
+change.case$ -- 0
 chr.to.int$ -- 0
-cite$ -- 19
-duplicate$ -- 184
-empty$ -- 364
-format.name$ -- 34
-if$ -- 872
+cite$ -- 2
+duplicate$ -- 30
+empty$ -- 36
+format.name$ -- 10
+if$ -- 139
 int.to.chr$ -- 0
-int.to.str$ -- 19
-missing$ -- 17
-newline$ -- 61
-num.names$ -- 25
-pop$ -- 60
+int.to.str$ -- 2
+missing$ -- 2
+newline$ -- 9
+num.names$ -- 2
+pop$ -- 3
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 106
+skip$ -- 27
 stack$ -- 0
-substring$ -- 146
-swap$ -- 69
-text.length$ -- 5
+substring$ -- 37
+swap$ -- 20
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 2
 type$ -- 0
 warning$ -- 0
-while$ -- 35
-width$ -- 21
-write$ -- 159
+while$ -- 4
+width$ -- 3
+write$ -- 17

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.7.24)  24 JUL 2017 13:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.7.24)  24 JUL 2017 17:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -278,89 +278,29 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 8.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 32.
+) [1
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 32.
- [1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6] [7] [8
-]
-Package epstopdf Info: Source file: <procs-fig1.eps>
-(epstopdf)                    date: 2017-07-24 13:54:29
-(epstopdf)                    size: 16839 bytes
-(epstopdf)             Output file: <procs-fig1-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-24 13:54:32
-(epstopdf)                    size: 5500 bytes
-(epstopdf)             Command: <repstopdf --outfile=procs-fig1-eps-converted-t
-o.pdf procs-fig1.eps>
-(epstopdf)             \includegraphics on input line 503.
-Package epstopdf Info: Output file is already uptodate.
-
-<procs-fig1-eps-converted-to.pdf, id=46, 391.4625pt x 358.33875pt>
-File: procs-fig1-eps-converted-to.pdf Graphic file (type pdf)
-
-<use procs-fig1-eps-converted-to.pdf>
-Package pdftex.def Info: procs-fig1-eps-converted-to.pdf used on input line 503
-.
-(pdftex.def)             Requested size: 128.0374pt x 117.20233pt.
-Package epstopdf Info: Source file: <procs-fig2.eps>
-(epstopdf)                    date: 2017-07-24 13:54:29
-(epstopdf)                    size: 57941 bytes
-(epstopdf)             Output file: <procs-fig2-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-24 13:54:33
-(epstopdf)                    size: 15883 bytes
-(epstopdf)             Command: <repstopdf --outfile=procs-fig2-eps-converted-t
-o.pdf procs-fig2.eps>
-(epstopdf)             \includegraphics on input line 520.
-Package epstopdf Info: Output file is already uptodate.
-
-<procs-fig2-eps-converted-to.pdf, id=47, 585.18625pt x 370.38374pt>
-File: procs-fig2-eps-converted-to.pdf Graphic file (type pdf)
-
-<use procs-fig2-eps-converted-to.pdf>
-Package pdftex.def Info: procs-fig2-eps-converted-to.pdf used on input line 520
-.
-(pdftex.def)             Requested size: 433.62pt x 274.46397pt.
- Adding sideways figure on 
-right hand page Adding sideways figure on  right hand page [9 <./procs-fig1-eps
--converted-to.pdf>] [10 <./procs-fig2-eps-converted-to.pdf>] [11] [12] [13]
-[14] [15] (./psb.bbl) [16] (./psb.aux) ) 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./psb.bbl) [2] (./psb.aux
+) ) 
 Here is how much of TeX's memory you used:
- 3232 strings out of 494953
- 40745 string characters out of 6180977
- 108709 words of memory out of 5000000
- 6434 multiletter control sequences out of 15000+600000
- 15854 words of font info for 59 fonts, out of 8000000 for 9000
+ 3104 strings out of 494953
+ 39195 string characters out of 6180977
+ 102529 words of memory out of 5000000
+ 6344 multiletter control sequences out of 15000+600000
+ 8936 words of font info for 34 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 41i,14n,26p,374b,324s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cmextra/cmbsy8.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/ms
-am10.pfb>
-Output written on psb.pdf (16 pages, 277072 bytes).
+ 41i,5n,26p,446b,154s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on psb.pdf (2 pages, 98789 bytes).
 PDF statistics:
- 154 PDF objects out of 1000 (max. 8388607)
- 106 compressed objects within 2 object streams
+ 39 PDF objects out of 1000 (max. 8388607)
+ 27 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
