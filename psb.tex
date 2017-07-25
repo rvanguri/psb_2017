@@ -52,11 +52,12 @@ to retrospectively study drug effects from patient population
 data. The FDA Adverse Event Reporting System contains millions of
 reports, thousands of drugs and thousands of effects.  As a result,
 calculating the statistical significance of every possible side effect
-is computational intensive.  The problem grows exponentially when
+is computational intensive.  The problem becomes intractable when
 considering drug interactions. By using a combination of distributed
 high computing computing made available by the Open Science Grid and
 designing an on-demand system to study higher order drug effects, we
-create an extensive database of drug effects.
+present methods for conducting large scale analysis of the FAERS
+dataset, particularly to study drug effects.
 \end{abstract}
 
 % required
@@ -64,11 +65,24 @@ create an extensive database of drug effects.
 
 \section{Introduction}
 
-Spontaneous reporting systems such as the FDA Adverse Event Reporting System (FAERS) are important resources for detecting drug adverse events after a drug is approved (pharmacovigilance). However, pharmacovigilance algorithms often lead to many false positive and false negative findings due to issues of confounding, and detection of drug-drug interactions is an even greater challenge.
-We previously developed databases for off-label drug effects (O\textsc{ffsides}) and drug interactions (T\textsc{wosides}) that account for these limitations using a novel Statistical Correction for Uncharacterized Bias (SCRUB)~\cite{Tatonetti2012}.  These databases are available for download to the public.  In addition to updates to the algorithm, we have developed a gateway to access the databases, known as nSides.
-nSides aims to make these databases accessible to researchers, clinicians, and patients alike and contains additional features related to drug safety.
-% nSides aims to increase the ease of accessibility of the databases and contains additional features related to drug safety.
-Since it is not feasible to generate models for every possible drug combination, we develop a novel model request system which submits jobs to the Open Science Grid and appends the results to the databases for future access.
+Spontaneous reporting systems such as the FDA Adverse Event Reporting
+System (FAERS) are important resources for detecting drug adverse
+events after a drug is approved (pharmacovigilance). However,
+pharmacovigilance algorithms often lead to many false positive and
+false negative findings due to issues of confounding, and detection of
+drug-drug interactions is an even greater challenge.  We previously
+developed databases for off-label drug effects (O\textsc{ffsides}) and
+drug interactions (T\textsc{wosides}) that account for these
+limitations using a novel Statistical Correction for Uncharacterized
+Bias (SCRUB)~\cite{Tatonetti2012}.  These databases are available for
+download to the public.  In addition to updates to the algorithm, we
+have developed a gateway to access the databases, known as nSides.
+nSides aims to make these databases accessible to researchers,
+clinicians, and patients alike and contains additional features
+related to drug safety.  Since it is not feasible to generate models
+for every possible drug combination, we develop a novel model request
+system which submits jobs to the Open Science Grid and appends the
+results to the databases for future access.
 
 \section{Data Sources}
 
@@ -96,6 +110,20 @@ analysis. This procedure, known as SCRUB, matches cases and controls
 between patients exposed and not exposed to a particular drug
 (O\textsc{ffsides}) or two drugs (T\textsc{wosides}) to mitigate
 confounding biases.
+
+\section{Methods}
+
+\subsection{Computational Challenge}
+
+The AEOLUS dataset contains $\approx$4,500 drugs, $\approx$4,500,000
+reports and $\approx$7,500 effects. Since SCRUB is performed to find
+appropriate controls for a set of cases on a particular drug, a model
+needs to be developed for every unique drug. It is easily seen that
+modeling drug interactions becomes intractable quickly, with 20
+million possible interactions of 2 drugs.  However, many of the 2 drug
+combinations do not have enough reports in the AEOLUS dataset to
+perform meaningful case-control matching.
+
 
 \bibliographystyle{ws-procs11x85}
 \bibliography{ws-pro-sample}
