@@ -106,21 +106,49 @@ variance and selection bias, propensity score matching is implemented
 to form the groups used in the disproportionality analysis. This
 procedure, known as SCRUB, matches cases and controls between patients
 exposed and not exposed to a particular drug (O\textsc{ffsides}) or
-two drugs (T\textsc{wosides}) to mitigate confounding biases.
+two drugs (T\textsc{wosides}) to mitigate confounding biases. Once
+cases and controls are matched, the PRR for various side effects are
+calculated.
 
 There are several key differences between the O\textsc{ffsides} and
 T\textsc{wosides} databases and nSides. The updated algorithm uses a
 deep learning model instead of logistic regression to calculate
-propensity scores to match cases and controls.
+propensity scores to match cases and controls. As a result, the
+computational power required to populate nSides is much
+greater. Additionally, nSides is not designed to be limited to
+effects of single and interactions of 2 drugs.
+
+tensorflow-gpu
 
 \subsection{Computational Challenge}
 
-The AEOLUS dataset contains $\approx$4,500 drugs, $\approx$4,500,000
-reports and $\approx$7,500 effects. In order to populate nSides, a
-unique model needs to be created for each drug present in AEOLUS,
-presenting a computational challenge.  This becomes even more
-intractable when considering drug interactions.
+Populating the nSides database requires the SCRUB procedure to be run
+for each drug or combination of drugs individually to identify
+appropriate cases and controls. Once cases and controls are
+identified, PRR values need to be calculated over a range of side
+effects. Since the AEOLUS dataset contains $\approx$4,000 drugs,
+$\approx$5,000,000 reports, and $\approx$8,000 effects to analyze, a
+computational challenge emerges.
 
+The nSides database is initially populated with single drug
+effects. To do this, a deep neural network model is generated for each
+unique $\approx$4,500 drugs in the AEOLUS dataset. The models are
+generated using the TensorFlow machine learning library. Because the
+computation involved in deep neural network model generation is more
+intensive than the logistic regression models used for the creation of
+O\textsc{ffsides} and T\textsc{wosides}, a more complicated
+computational infrastructure is used.
+
+\subsection{Computational Structure}
+Generating a model for an individual drug involves the following:
+\begin{enumerate}
+\item Dimensional reduction of the complete AEOLUS dataset: only consider co-reported drugs that appear in at least 1 report
+\item Separate exposed and non-exposed reports
+\item Generate deep learning models
+\item Use resulting scores to perform propensity score matching
+\item Evaluate side effect PRR values
+\item Populate nSides database
+\end{enumerate}
 
 
 \bibliographystyle{ws-procs11x85}
