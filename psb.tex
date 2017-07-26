@@ -17,19 +17,19 @@ E-mail: r.vanguri@columbia.edu}
 
 \address{Department of Biomedical Informatics, Columbia University,\\
 New York, NY 10032 USA\\
-E-mail: r.vanguri@columbia.edu}
+E-mail: jdr2160@columbia.edu}
 
 \author{TAL LORBERBAUM}
 
 \address{Department of Biomedical Informatics, Columbia University,\\
 New York, NY 10032 USA\\
-E-mail: r.vanguri@columbia.edu}
+E-mail: tal.lorberbaum@columbia.edu}
 
 \author{VICTOR NWANKWO}
 
 \address{Department of Biomedical Informatics, Columbia University,\\
 New York, NY 10032 USA\\
-E-mail: r.vanguri@columbia.edu}
+E-mail: vtn2106@columbia.edu}
 
 \author{CHOONHAN YOUN}
 
@@ -47,12 +47,15 @@ E-mail: nick.tatonetti@columbia.edu}
 Adverse drug events are a leading cause of morbidity and mortality
 around the world. Regulatory agencies, such as the Food and Drug
 Administration (FDA), maintain large collections of adverse event
-reports, providing an opportunity to retrospectively study drug and drug combination effects. 
-We mined the FDA Adverse Event Reporting System (FAERS) for significant adverse reactions and developed a database of drug
-effects, known as nSides. FAERS contains millions of reports covering
-thousands of drugs and thousands of effects, requiring the computing of approximately X billion models.  
-In order to calculate side effect significances for all drug combinations reported in
-FAERS, we present a distributed, on-demand computational architecture.
+reports, providing an opportunity to retrospectively study drug and
+drug combination effects.  We mined the FDA Adverse Event Reporting
+System (FAERS) for significant adverse reactions and developed a
+database of drug effects, known as nSides. FAERS contains millions of
+reports covering thousands of drugs and thousands of effects,
+requiring the computing of approximately X billion models.  In order
+to calculate side effect significances for all drug combinations
+reported in FAERS, we present a distributed, on-demand computational
+architecture.
 \end{abstract}
 
 % required
@@ -69,15 +72,11 @@ drug-drug interactions is an even greater challenge.  We previously
 developed databases for off-label drug effects (O\textsc{ffsides}) and
 drug interactions (T\textsc{wosides}) that account for these
 limitations using a novel Statistical Correction for Uncharacterized
-Bias (SCRUB)~\cite{Tatonetti2012}.  These databases are available for
-download to the public.  In addition to updates to the algorithm, we
-have developed a gateway to access the databases, known as nSides.
-nSides aims to make these databases accessible to researchers,
-clinicians, and patients alike and contains additional features
-related to drug safety.  Since it is not feasible to generate models
-for every possible drug combination, we develop a novel model request
-system which submits jobs to the Open Science Grid and appends the
-results to the databases for future access.
+Bias (SCRUB)~\cite{Tatonetti2012}.  We re-mined FAERS with an updated
+algorithm to populate a new version of the databases, known as nSides.
+nSides also contains a public web gateway (http://nsides.io/)
+accessible to researchers, clinicians and patients alike.
+
 
 \section{Data Sources}
 
@@ -89,10 +88,14 @@ by removing duplicate cases. This is done by applying standardized
 vocabularies in the form of RxNorm to map drug names and SNOMED-CT to
 map outcomes. The AEOLUS dataset is publicly available.
 
-The algorithm used to develop the databases used for nSides are
-similar to the previously developed O\textsc{ffsides} and
-T\textsc{wosides} databases using raw FAERS data~\cite{Tatonetti2012}.
-A standard signal detection algorithm involves conducting a
+\section{Methods}
+
+\subsection{Algorithm}
+The algorithm used to develop the databases used for nSides is an
+updated version of the one used to populate the O\textsc{ffsides} and
+T\textsc{wosides} databases.  These databases contain side effect
+significances calculated using raw FAERS data~\cite{Tatonetti2012}.
+Generally, a standard signal detection algorithm involves conducting a
 disproportionality analysis by comparing the observed reporting
 frequency of a drug and outcome to the expected reporting frequency of
 all other drugs and the outcome. The metric is known as a Proportional
@@ -100,24 +103,24 @@ Reporting Ratio (PRR). If the outcome occurred by chance, the
 frequencies will be equal and the PRR will be one. If the PRR is much
 larger than one, the null hypothesis is rejected. To reduce sampling
 variance and selection bias, propensity score matching is implemented
-on the FAERS data to form the groups used in the disproportionality
-analysis. This procedure, known as SCRUB, matches cases and controls
-between patients exposed and not exposed to a particular drug
-(O\textsc{ffsides}) or two drugs (T\textsc{wosides}) to mitigate
-confounding biases.
+to form the groups used in the disproportionality analysis. This
+procedure, known as SCRUB, matches cases and controls between patients
+exposed and not exposed to a particular drug (O\textsc{ffsides}) or
+two drugs (T\textsc{wosides}) to mitigate confounding biases.
 
-\section{Methods}
+There are several key differences between the O\textsc{ffsides} and
+T\textsc{wosides} databases and nSides. The updated algorithm uses a
+deep learning model instead of logistic regression to calculate
+propensity scores to match cases and controls.
 
 \subsection{Computational Challenge}
 
 The AEOLUS dataset contains $\approx$4,500 drugs, $\approx$4,500,000
-reports and $\approx$7,500 effects. Since SCRUB is performed to find
-appropriate controls for a set of cases on a particular drug, a model
-needs to be developed for every unique drug. It is easily seen that
-modeling drug interactions becomes intractable quickly, with 20
-million possible interactions of 2 drugs.  However, many of the 2 drug
-combinations do not have enough reports in the AEOLUS dataset to
-perform meaningful case-control matching.
+reports and $\approx$7,500 effects. In order to populate nSides, a
+unique model needs to be created for each drug present in AEOLUS,
+presenting a computational challenge.  This becomes even more
+intractable when considering drug interactions.
+
 
 
 \bibliographystyle{ws-procs11x85}
