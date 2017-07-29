@@ -2,6 +2,7 @@
 
 \documentclass{ws-procs11x85}
 \usepackage{ws-procs-thm}           % comment this line when `amsthm / theorem / ntheorem` package is used
+\usepackage{amsmath}
 
 \begin{document}
 
@@ -156,8 +157,14 @@ intensive than the logistic regression models used for the creation of
 O\textsc{ffsides} and T\textsc{wosides}, a more complicated
 computational infrastructure is used.
 
+\subsubsection{Distributed Computing Strategy}
+The combinatorial complexity of running all jobs scales on the order of $\Theta(N^2)$ in the number of drugs. Given that a single job running on a server with [SPECS HERE] takes 4-10 hours to complete, a distributing computing strategy is necessary to make the total runtime practical. We utilized two distributed computing systems to determine the PRR between all pairs of coreported drugs, as described below.
+
+The first of these, as mentioned above, was provided by the OSG. The OSG uses the HTCondor job submission software~\cite{beowulfbook-condor}, which handles allocation of computing resources to jobs submitted by the user. The other distributed computing system we utilized was Columbia University's scientific computing cluster, named Habanero. Habanero, like the OSG, uses a job submission management system, but unlike the OSG, Habanero uses the Slurm workload manager~\cite{slurm} for user-submitted jobs. We used both HTCondor and Slurm to submit jobs in a directed acyclic graph (DAG) configuration, supported using native extensions to HTCondor and Slurm~\cite{dagman}. In short, the DAG strategy allows users to take advantage of the fact that many distributed computing workflows consist of jobs containing common elements, such as initial data preparation. In a simplified example, a workflow may consist of one invariant data preparation stage followed by two sequential machine learningg models, where each step relies on the previous step, and the machine learning models accept variable parameters. Here, the DAG capabilities of HTCondor and Slurm will only run the first stage one time, and sequentially pass the results of each stage to the next stage with the appropriate parameters as the results of the previous stage are available. This approach allows us to substantially reduce the combinatorial complexity of running all jobs to a manageable level.
+
 \subsection{Computational Structure}
 Generating a model for an individual drug involves the following:
+
 \begin{enumerate}
 \item Dimensional reduction of the complete AEOLUS dataset: only consider co-reported drugs that appear in at least 1 report
 \item Separate exposed and non-exposed reports
@@ -167,7 +174,11 @@ Generating a model for an individual drug involves the following:
 \item Populate nSides database
 \end{enumerate}
 
+
 \subsection{On-demand Interface}
+The original testing of our approach was performed manually on the distributed computing servers using a command line interface and shell scripts. In order to improve the ease of job submission in the future, we have developed a robust searchable shared-usage gateway to the OSG resources we have described previously. The gateway uses a three-tiered architecture consisting of browser-based user interfaces on the frontend, the OSG job submission system on the backend, and middleware to facilitate communication between the other two components. The user interfaces are deployed using the Python Flask framework, and they access a variety of web services that constitute the middle tier of the gateway. These web services are arranged in a way that allows a heterogeneous collection of resources to be accessed remotely in a uniform fashion.
+
+Additionally, the user interface frontend is bundled alongside a RESTful Web API (Application Programming Interface) that allows authenticated users to submit jobs programmatically. This API is implemented using the Agave tenant service~\cite{dooley2012agave}---a cloud-based API system designed for developing APIs to be used for scientific computing. The Agave job API manages all aspects of job execution and management, including data staging, job submission, job monitoring, output archiving, event logging, sharing, and notifications.
 
 \section{Discussion}
 

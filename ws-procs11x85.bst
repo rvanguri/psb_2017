@@ -913,7 +913,7 @@ FUNCTION {inproceedings}
   blank.sep     
         publisher empty$
             {format.address.date output}
-            {push.address.publisher.year "publihser" output.check}
+            {push.address.publisher.year "publisher" output.check}
         if$
     }
     { format.chapter.ppages "chapter and pages" output.check

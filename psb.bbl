@@ -8,4 +8,23 @@ N.~P. Tatonetti, P.~P. Ye, R.~Daneshjou and R.~B. Altman, {\em Science
 J.~M. Banda, L.~Evans, R.~S. Vanguri, N.~P. Tatonetti, P.~B. Ryan and N.~H.
   Shah, {\em Scientific data} {\bf 3}  (2016).
 
+\bibitem{beowulfbook-condor}
+T.~Tannenbaum, D.~Wright, K.~Miller and M.~Livny, {C}ondor -- a distributed job
+  scheduler, in {\em Beowulf Cluster Computing with {L}inux\/},  ed.
+  T.~Sterling (MIT Press, October 2001)
+
+\bibitem{slurm}
+M.~Jette and M.~Grondona, Slurm: Simple linux utility for resource management,
+  in {\em ClusterWorld Conference and Expo\/}, June 2003.
+
+\bibitem{dagman}
+P.~Couvares, T.~Kosar, A.~Roy, J.~Weber and K.~Wenger, Workflow in condor, in
+  {\em Workflows for e-Science\/},  eds. I.~Taylor, E.~Deelman, D.~Gannon and
+  M.~Shields (Springer Press, January 2007)
+
+\bibitem{dooley2012agave}
+R.~Dooley, M.~Vaughn, D.~Stanzione, S.~Terry and E.~Skidmore,
+  Software-as-a-service: The iplant foundation api, in {\em 5th IEEE Workshop
+  on Many-Task Computing on Grids and Supercomputers\/}, November 2012.
+
 \end{thebibliography}
