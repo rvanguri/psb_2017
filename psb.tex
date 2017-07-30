@@ -6,7 +6,7 @@
 
 \begin{document}
 
-\title{DRUG EFFECT DISCOVERY USING SPONTANEOUS REPORTING SYSTEMS}
+\title{[A DISTRIBUTED INFRASTRUCTURE FOR] DRUG EFFECT DISCOVERY USING SPONTANEOUS REPORTING SYSTEMS}
 
 \author{RAMI S VANGURI}
 
@@ -83,8 +83,8 @@ nSides also contains a front-end component consisting of a web gateway
 alike.
 
 We present the computational infrastructure used to populate the
-nSides back-end database.  Additionally, we present middleware used to
-communicate between users and the back-end database population.  The
+nSides back-end database. Additionally, we present middleware used to
+communicate between users and the back-end database.  The
 communication is done via an on-demand interface where users can
 request the nSides back-end database be populated with a specific drug
 combination. Drug combinations must be calculated on an on-demand
@@ -95,12 +95,12 @@ database within 24 hours of a user request.
 A key feature of the computing infrastructure presented is portability
 to other spontaneous reporting systems, such as EudraVigilance.  This
 allows researchers to create their own version of the back-end
-database for any use, including incorporation in the nSides web
-gateway.  Additionally, using the consistent algorithms across
+database for any use, including incorporation into the nSides web
+gateway. Additionally, using consistent algorithms across
 spontaneous reporting systems allows researchers to evaluate drug
 effect differences and bias due to drug approval process differences.
 
-The computational infrastructure with instructions is located on GitHub: https://github.com/tatonetti-lab/nsides
+The computational infrastructure with instructions can be found on GitHub, at https://github.com/tatonetti-lab/nsides.
 
 
 \section{Data Sources}
@@ -109,18 +109,19 @@ There are several data sources which are involved in nSides. We use a
 curated version of the FDA Adverse Event Reporting System (FAERS)
 known as Adverse Event Open Learning through Universal Standardization
 (AEOLUS)~\cite{AEOLUS}.  AEOLUS aims to clean and normalize the data
-by removing duplicate cases. This is done by applying standardized
-vocabularies in the form of RxNorm to map drug names and SNOMED-CT to
-map outcomes. The AEOLUS dataset is publicly available.
+by removing duplicate cases. This is done by mapping drug names to RxNorm and outcomes to SNOMED-CT---two standardized vocabularies that are widely accepted in informatics. The AEOLUS dataset is publicly available.
 
-By using standard vocabularies for drug names and outcomes allows
+Using standard vocabularies for drug names and outcomes allows
 other spontaneous reporting systems to be adapted to a consistent
-format used on the AEOLUS dataset.
+format used on the AEOLUS dataset. Furthermore, this strategy facilitates
+semantic interoperability with other informatics tools, allowing nSides to be
+more easily incorporated into complex workflows and analysis pipelines.
 
 \section{Methods}
+In this paper, we focus on the distributed computing setup used to learn and visualize the results of nSides. Before describing this setup, we will briefly describe the algorithmic approach used to learn the nSides database.
 
 \subsection{Algorithm}
-The algorithm used to develop the databases used for nSides is an
+The algorithm used to develop the databases comprising nSides is an
 updated version of the one used to populate the O\textsc{ffsides} and
 T\textsc{wosides} databases.  These databases contain side effect
 significances calculated using raw FAERS data~\cite{Tatonetti2012}.
@@ -141,13 +142,13 @@ calculated.
 
 There are several key differences between the O\textsc{ffsides} and
 T\textsc{wosides} databases and nSides. The updated algorithm uses a
-deep learning model as well as a logistic regression to calculate
+deep learning model as well as logistic regression to calculate
 propensity scores to match cases and controls. By using two algorithms
-instead of just one and the increased complexity of deep learning
+instead of just one, and the increased complexity of deep learning
 models, the computational power required to populate the nSides
 back-end database is much greater. Since nSides is not designed to be
 limited to effects of single and interactions of 2 drugs, a much
-larger computational infrastructure is required.
+more robust computational infrastructure is required.
 
 \subsection{Computational Challenge}
 
@@ -157,24 +158,24 @@ appropriate cases and controls. Once cases and controls are
 identified, PRR values need to be calculated over a range of side
 effects. Since the AEOLUS dataset contains $\approx$4,000 drugs,
 $\approx$5,000,000 reports, and $\approx$8,000 effects to analyze, a
-computational challenge emerges.  To deal with this challenge we
+computational challenge emerges.  To deal with this challenge, we
 employ resources made available by the Open Science Grid (OSG) and
 Columbia University's computing cluster, Habanero. The OSG provides
 access to computing resources for research in the United States, free
 of charge. The computing facilities are located at over 100 sites
 spanning the United States, primarily at universities and national
-labs.  The computing infrastructure presented is optimized to work on
+laboratories. The computing infrastructure we present is optimized to work on
 the OSG to increase the portability of the infrastructure to other
-spontaneous reporting systems.
+spontaneous reporting systems, but our use of Habanero demostrates that it can be easily adapted to other distributed computing platforms as well.
 
 The nSides back-end database is initially populated with single drug
 effects. To do this, a deep neural network model and a logistic
-regression model are generated for each the unique $\approx$4,500
-drugs in the AEOLUS dataset. The models are generated using the
-TensorFlow and SciKit Learn machine learning libraries,
+regression model are generated for each of the $\approx$4,500 unique
+drugs in the AEOLUS dataset. The models are generated using the two scientific computing libraries
+TensorFlow and scikit-learn,
 respectively. The computation involved in deep neural network model
-generation is more intensive than solely using logistic regression
-models, such as in the creation of O\textsc{ffsides} and
+generation is more intensive than that of the more traditional logistic regression
+model, such as those used in the creation of O\textsc{ffsides} and
 T\textsc{wosides}. As a result, a more complicated computational
 infrastructure is used.
 
@@ -190,11 +191,10 @@ The combinatorial complexity of running all jobs scales on the order
 of $\Theta(N^2)$ in the number of drugs. Given that a single job
 running on an OSG node takes 4-10 hours to complete, a distributing
 computing strategy is necessary to make the total runtime
-practical. We utilized two distributed computing systems to determine
-the PRR between all pairs of coreported drugs, as described below.
+practical. As mentioned above, we utilized two distributed computing systems to determine
+the PRR between all pairs of coreported drugs.
 
-The first of these, as mentioned above, was provided by the OSG. The
-OSG uses the HTCondor job submission
+The first of these was provided by the OSG. The OSG uses the HTCondor job submission
 software~\cite{beowulfbook-condor}, which handles allocation of
 computing resources to jobs submitted by the user. The other
 distributed computing system we utilized was Columbia University's
@@ -212,12 +212,12 @@ machine learning models, where each step relies on the previous step,
 and the machine learning models accept variable parameters. Here, the
 DAG capabilities of HTCondor and Slurm will only run the first stage
 one time, and sequentially pass the results of each stage to the next
-stage with the appropriate parameters as the results of the previous
+stage with the appropriate parameters, as the results of the previous
 stage are available. This approach allows us to substantially reduce
 the combinatorial complexity of running all jobs to a manageable
 level.
 
-Since HTCondor and SLURM are the two most common job schedulers, we
+Since HTCondor and SLURM are two very common job schedulers, we
 release code such that the nSides back-end infrastructure can be
 easily deployed on either. This is done to increase the portability of
 the infrastructure to other spontaneous reporting systems.
@@ -226,25 +226,19 @@ the infrastructure to other spontaneous reporting systems.
 Generating a model for an individual drug or drug combination involves the following:
 
 \begin{enumerate}
-\item Data preparation: Dimensional reduction of the complete AEOLUS dataset to reduce computational complexity of generating models. To do this, we only consider co-reported drugs that appear in at least 1 report
-\item Model generation: Generate 20 deep learning and logistic regression models per drug using different subsets of exposed and non-exposed reports. This is done to increase generality of the model.
-\item Model evaluation: Use scores generated by models to perform propensity score matching, use propensity score matched cases and controls to calculate side effect PRR values.
+\item {\it Data preparation}: Dimensional reduction of the complete AEOLUS dataset to reduce computational complexity of generating models. To do this, we only consider co-reported drugs that appear in at least 1 report
+\item {\it Model generation}: Generate 20 deep learning and logistic regression models per drug using different subsets of exposed and non-exposed reports. This is done to increase generality of the model.
+\item {\it Model evaluation}: Use scores generated by models to perform propensity score matching, use propensity score matched cases and controls to calculate side effect PRR values.
 \item Populate nSides back-end MongoDB database.
 \end{enumerate}
 
-Steps (1) through (3) are performed in a grid computing environment
-and (4) is dependent on the hosting structure of the mongoDB database
-back-end.
+Steps (1) through (3) are performed in a grid computing environment and (4) is dependent on the hosting structure of the MongoDB back-end.
 
-TODO: DAG Figure to be referenced in Distributed Computing Strategy
-and Computational Structure
-
-
-
+TODO: DAG Figure to be referenced in Distributed Computing Strategy and Computational Structure
 
 
 \subsection{On-demand Interface}
-The original testing of our approach was performed manually on the
+The original testing of our approach was performed manually on the two
 distributed computing servers using a command line interface and shell
 scripts. In order to improve the ease of job submission in the future,
 we have developed a robust searchable shared-usage gateway to the OSG
