@@ -15,16 +15,16 @@ T.~Tannenbaum, D.~Wright, K.~Miller and M.~Livny, {C}ondor -- a distributed job
 
 \bibitem{slurm}
 M.~Jette and M.~Grondona, Slurm: Simple linux utility for resource management,
-  in {\em ClusterWorld Conference and Expo\/}, June 2003.
+  in {\em ClusterWorld Conference and Expo\/}, JUN 2003.
 
 \bibitem{dagman}
 P.~Couvares, T.~Kosar, A.~Roy, J.~Weber and K.~Wenger, Workflow in condor, in
   {\em Workflows for e-Science\/},  eds. I.~Taylor, E.~Deelman, D.~Gannon and
-  M.~Shields (Springer Press, January 2007)
+  M.~Shields (Springer Press, JAN 2007)
 
 \bibitem{dooley2012agave}
 R.~Dooley, M.~Vaughn, D.~Stanzione, S.~Terry and E.~Skidmore,
   Software-as-a-service: The iplant foundation api, in {\em 5th IEEE Workshop
-  on Many-Task Computing on Grids and Supercomputers\/}, November 2012.
+  on Many-Task Computing on Grids and Supercomputers\/}, NOV 2012.
 
 \end{thebibliography}

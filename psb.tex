@@ -67,26 +67,40 @@ applied to any spontaneous reporting system.
 \section{Introduction}
 
 Spontaneous reporting systems such as the FDA Adverse Event Reporting
-System (FAERS) are important resources for detecting drug adverse
-events after a drug is approved (pharmacovigilance). However,
-pharmacovigilance algorithms often lead to many false positive and
-false negative findings due to issues of confounding, and detection of
-drug-drug interactions is an even greater challenge.  We previously
-developed databases for off-label drug effects (O\textsc{ffsides}) and
-drug interactions (T\textsc{wosides}) using FAERS that account for
-these limitations using a novel Statistical Correction for
-Uncharacterized Bias (SCRUB)~\cite{Tatonetti2012}.  We re-mined FAERS
-with an updated algorithm to populate a new version of the databases,
-known as nSides.  nSides also contains a public web gateway
+System (FAERS) and EudraVigilance are important resources for
+detecting drug adverse events during and after the drug approval
+process (pharmacovigilance). However, pharmacovigilance algorithms
+often lead to many false positive and false negative findings due to
+issues of confounding, and detection of drug-drug interactions is an
+even greater challenge.  We previously developed databases for
+off-label drug effects (O\textsc{ffsides}) and drug interactions
+(T\textsc{wosides}) using FAERS that account for these limitations
+using a novel Statistical Correction for Uncharacterized Bias
+(SCRUB)~\cite{Tatonetti2012}.  We re-mined FAERS with an updated
+algorithm to populate a new version of the databases, known as nSides.
+nSides also contains a front-end component consisting of a web gateway
 (http://nsides.io/) accessible to researchers, clinicians and patients
 alike.
 
 We present the computational infrastructure used to populate the
-nSides database.  Additionally, we present an on-demand interface
-where users can request drug combination side effect
-significances. The same infrastructure and interface can be applied to
-any spontaneous reporting system in order to compare drug effects and
-bias.
+nSides back-end database.  Additionally, we present middleware used to
+communicate between users and the back-end database population.  The
+communication is done via an on-demand interface where users can
+request the nSides back-end database be populated with a specific drug
+combination. Drug combinations must be calculated on an on-demand
+basis due to the very high number of drug combinations possible in
+spontaneous reporting systems. The goal is to populate the back-end
+database within 24 hours of a user request.
+
+A key feature of the computing infrastructure presented is portability
+to other spontaneous reporting systems, such as EudraVigilance.  This
+allows researchers to create their own version of the back-end
+database for any use, including incorporation in the nSides web
+gateway.  Additionally, using the consistent algorithms across
+spontaneous reporting systems allows researchers to evaluate drug
+effect differences and bias due to drug approval process differences.
+
+The computational infrastructure with instructions is located on GitHub: https://github.com/tatonetti-lab/nsides
 
 
 \section{Data Sources}
@@ -98,6 +112,10 @@ known as Adverse Event Open Learning through Universal Standardization
 by removing duplicate cases. This is done by applying standardized
 vocabularies in the form of RxNorm to map drug names and SNOMED-CT to
 map outcomes. The AEOLUS dataset is publicly available.
+
+By using standard vocabularies for drug names and outcomes allows
+other spontaneous reporting systems to be adapted to a consistent
+format used on the AEOLUS dataset.
 
 \section{Methods}
 
@@ -129,8 +147,6 @@ computational power required to populate nSides is much
 greater. Additionally, nSides is not designed to be limited to
 effects of single and interactions of 2 drugs.
 
-tensorflow-gpu
-
 \subsection{Computational Challenge}
 
 Populating the nSides database requires the SCRUB procedure to be run
@@ -140,15 +156,16 @@ identified, PRR values need to be calculated over a range of side
 effects. Since the AEOLUS dataset contains $\approx$4,000 drugs,
 $\approx$5,000,000 reports, and $\approx$8,000 effects to analyze, a
 computational challenge emerges.  To deal with this challenge we
-employ resources made available by the Open Science Grid (OSG). The
-OSG provides access to computing resources for research in the United
-States, free of charge. The computing facilities are located at over
-100 sites spanning the United States, primarily at universities and
-national labs.  The computing infrastructure presented is optimized to
-work on the OSG, but can be adapted to work with other grid computing
-resources.
+employ resources made available by the Open Science Grid (OSG) and
+Columbia University's computing cluster, Habanero. The OSG provides
+access to computing resources for research in the United States, free
+of charge. The computing facilities are located at over 100 sites
+spanning the United States, primarily at universities and national
+labs.  The computing infrastructure presented is optimized to work on
+the OSG to increase the portability of the infrastructure to other
+spontaneous reporting systems.
 
-The nSides database is initially populated with single drug
+The nSides back-end database is initially populated with single drug
 effects. To do this, a deep neural network model is generated for each
 unique $\approx$4,500 drugs in the AEOLUS dataset. The models are
 generated using the TensorFlow machine learning library. Because the
@@ -157,30 +174,109 @@ intensive than the logistic regression models used for the creation of
 O\textsc{ffsides} and T\textsc{wosides}, a more complicated
 computational infrastructure is used.
 
-\subsubsection{Distributed Computing Strategy}
-The combinatorial complexity of running all jobs scales on the order of $\Theta(N^2)$ in the number of drugs. Given that a single job running on a server with [SPECS HERE] takes 4-10 hours to complete, a distributing computing strategy is necessary to make the total runtime practical. We utilized two distributed computing systems to determine the PRR between all pairs of coreported drugs, as described below.
+TODO: Figure with number of drugs (x-axis) and number of models that need to be computed (y-axis)
 
-The first of these, as mentioned above, was provided by the OSG. The OSG uses the HTCondor job submission software~\cite{beowulfbook-condor}, which handles allocation of computing resources to jobs submitted by the user. The other distributed computing system we utilized was Columbia University's scientific computing cluster, named Habanero. Habanero, like the OSG, uses a job submission management system, but unlike the OSG, Habanero uses the Slurm workload manager~\cite{slurm} for user-submitted jobs. We used both HTCondor and Slurm to submit jobs in a directed acyclic graph (DAG) configuration, supported using native extensions to HTCondor and Slurm~\cite{dagman}. In short, the DAG strategy allows users to take advantage of the fact that many distributed computing workflows consist of jobs containing common elements, such as initial data preparation. In a simplified example, a workflow may consist of one invariant data preparation stage followed by two sequential machine learningg models, where each step relies on the previous step, and the machine learning models accept variable parameters. Here, the DAG capabilities of HTCondor and Slurm will only run the first stage one time, and sequentially pass the results of each stage to the next stage with the appropriate parameters as the results of the previous stage are available. This approach allows us to substantially reduce the combinatorial complexity of running all jobs to a manageable level.
+\subsubsection{Distributed Computing Strategy}
+The combinatorial complexity of running all jobs scales on the order
+of $\Theta(N^2)$ in the number of drugs. Given that a single job
+running on an OSG node takes 4-10 hours to complete, a distributing
+computing strategy is necessary to make the total runtime
+practical. We utilized two distributed computing systems to determine
+the PRR between all pairs of coreported drugs, as described below.
+
+The first of these, as mentioned above, was provided by the OSG. The
+OSG uses the HTCondor job submission
+software~\cite{beowulfbook-condor}, which handles allocation of
+computing resources to jobs submitted by the user. The other
+distributed computing system we utilized was Columbia University's
+scientific computing cluster, named Habanero. Habanero, like the OSG,
+uses a job submission management system, but unlike the OSG, Habanero
+uses the Slurm workload manager~\cite{slurm} for user-submitted
+jobs. We used both HTCondor and Slurm to submit jobs in a directed
+acyclic graph (DAG) configuration, supported using native extensions
+to HTCondor and Slurm~\cite{dagman}. In short, the DAG strategy allows
+users to take advantage of the fact that many distributed computing
+workflows consist of jobs containing common elements, such as initial
+data preparation. In a simplified example, a workflow may consist of
+one invariant data preparation stage followed by two sequential
+machine learning models, where each step relies on the previous step,
+and the machine learning models accept variable parameters. Here, the
+DAG capabilities of HTCondor and Slurm will only run the first stage
+one time, and sequentially pass the results of each stage to the next
+stage with the appropriate parameters as the results of the previous
+stage are available. This approach allows us to substantially reduce
+the combinatorial complexity of running all jobs to a manageable
+level.
+
+Since HTCondor and SLURM are the two most common job schedulers, we
+release code such that the nSides back-end infrastructure can be
+easily deployed on either. This is done to increase the portability of
+the infrastructure to other spontaneous reporting systems.
 
 \subsection{Computational Structure}
-Generating a model for an individual drug involves the following:
+Generating a model for an individual drug or drug combination involves the following:
 
 \begin{enumerate}
-\item Dimensional reduction of the complete AEOLUS dataset: only consider co-reported drugs that appear in at least 1 report
-\item Separate exposed and non-exposed reports
-\item Generate deep learning models
-\item Use scores generated by models to perform propensity score matching
-\item Evaluate side effect PRR values
-\item Populate nSides database
+\item Data preparation: Dimensional reduction of the complete AEOLUS dataset to reduce computational complexity of generating models. To do this, we only consider co-reported drugs that appear in at least 1 report
+\item Model generation: Generate 20 deep learning models per drug using different subsets of exposed and non-exposed reports. This is done to increase generality of the model.
+\item Model evaluation: Use scores generated by models to perform propensity score matching, use propensity score matched cases and controls to calculate side effect PRR values.
+\item Populate nSides back-end MongoDB database.
 \end{enumerate}
+
+Steps (1) through (3) are performed in a grid computing environment
+and (4) is dependent on the hosting structure of the mongoDB database
+back-end.
+
+TODO: DAG Figure to be referenced in Distributed Computing Strategy
+and Computational Structure
+
+
+
 
 
 \subsection{On-demand Interface}
-The original testing of our approach was performed manually on the distributed computing servers using a command line interface and shell scripts. In order to improve the ease of job submission in the future, we have developed a robust searchable shared-usage gateway to the OSG resources we have described previously. The gateway uses a three-tiered architecture consisting of browser-based user interfaces on the frontend, the OSG job submission system on the backend, and middleware to facilitate communication between the other two components. The user interfaces are deployed using the Python Flask framework, and they access a variety of web services that constitute the middle tier of the gateway. These web services are arranged in a way that allows a heterogeneous collection of resources to be accessed remotely in a uniform fashion.
+The original testing of our approach was performed manually on the
+distributed computing servers using a command line interface and shell
+scripts. In order to improve the ease of job submission in the future,
+we have developed a robust searchable shared-usage gateway to the OSG
+resources we have described previously. The gateway uses a
+three-tiered architecture consisting of browser-based user interfaces
+on the frontend, the OSG job submission system on the backend, and
+middleware to facilitate communication between the other two
+components. The user interfaces are deployed using the Python Flask
+framework, and they access a variety of web services that constitute
+the middle tier of the gateway. These web services are arranged in a
+way that allows a heterogeneous collection of resources to be accessed
+remotely in a uniform fashion.
 
-Additionally, the user interface frontend is bundled alongside a RESTful Web API (Application Programming Interface) that allows authenticated users to submit jobs programmatically. This API is implemented using the Agave tenant service~\cite{dooley2012agave}---a cloud-based API system designed for developing APIs to be used for scientific computing. The Agave job API manages all aspects of job execution and management, including data staging, job submission, job monitoring, output archiving, event logging, sharing, and notifications.
+Additionally, the user interface frontend is bundled alongside a
+RESTful Web API (Application Programming Interface) that allows
+authenticated users to submit jobs programmatically. This API is
+implemented using the Agave tenant service~\cite{dooley2012agave}---a
+cloud-based API system designed for developing APIs to be used for
+scientific computing. The Agave job API manages all aspects of job
+execution and management, including data staging, job submission, job
+monitoring, output archiving, event logging, sharing, and
+notifications.
 
 \section{Discussion}
+
+Creating an open-source computing infrastructure for mining and
+presenting side effect significances from spontaneous reporting
+systems has great potential for improving pharmacovigilance. By using
+the same algorithm across many systems, it can be possible to evaluate
+drug effect significance differences which can be used to reduce the
+potential of adverse drug effects.
+
+Due to dataset restrictions, it is not always possible to incorporate
+spontaneous reporting system data other than FAERS directly.  For
+example, EudraVigilance data is only available to academic
+institutions within the European Union. With the infrastructure
+presented, it is possible for researchers with access to the
+EudraVigilance to form a separate version of nSides which can be
+compared with the version made with FAERS data.
+
+
 
 
 \bibliographystyle{ws-procs11x85}
