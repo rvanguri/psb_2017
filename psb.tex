@@ -85,14 +85,26 @@ nSides also contains a front-end component consisting of a web gateway
 alike.
 
 We present the computational infrastructure used to populate the
-nSides back-end database. Additionally, we present middleware used to
-communicate between users and the back-end database.  The
-communication is done via an on-demand interface where users can
-request the nSides back-end database be populated with a specific drug
-combination. Drug combinations must be calculated on an on-demand
-basis due to the very high number of drug combinations possible in
-spontaneous reporting systems. The goal is to populate the back-end
-database within 24 hours of a user request.
+nSides back-end database, designed to be executed on grid computing
+systems. Additionally, we present middleware used to communicate
+between users and the back-end database.  The communication is done
+via an on-demand interface where users can request the nSides back-end
+database be populated with a specific drug combination. Drug
+combinations must be calculated on an on-demand basis due to the very
+high number of drug combinations possible in spontaneous reporting
+systems. The goal is to populate the back-end database within 24 hours
+of a user request. A diagram of the workflow is shown in
+Fig~\ref{fig:workflow}.
+
+\begin{figure}[h]
+\centerline{\includegraphics[width=0.9\textwidth]{workflow}}
+\caption{A diagram representation of the computational infrastructure
+  presented. Spontaneous reporting system data is processed on grid
+  computing systems to generate an adverse event database with a web
+  front-end which has an on-demand interface to request drug
+  combination adverse reactions. }
+\label{fig:workflow}
+\end{figure}
 
 A key feature of the computing infrastructure presented is portability
 to other spontaneous reporting systems, such as EudraVigilance.  This
