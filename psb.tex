@@ -94,7 +94,7 @@ combinations must be calculated on an on-demand basis due to the very
 high number of drug combinations possible in spontaneous reporting
 systems. The goal is to populate the back-end database within 24 hours
 of a user request. A diagram of the workflow is shown in
-Fig~\ref{fig:workflow}.
+Fig.~\ref{fig:workflow}.
 
 \begin{figure}[h]
 \centerline{\includegraphics[width=0.9\textwidth]{workflow}}
@@ -153,7 +153,16 @@ analysis. This procedure, known as SCRUB, matches cases and controls
 between patients exposed and not exposed to a particular drug
 (O\textsc{ffsides}) or two drugs (T\textsc{wosides}) to mitigate
 confounding biases. Once cases and controls are matched, the PRR for
-various side effects are calculated.
+various side effects are calculated. An example is shown in
+Fig.~\ref{fig:prr}.
+
+\begin{figure}[h]
+\centerline{\includegraphics[width=0.7\textwidth]{prr}}
+\caption{Example result using the nSides front-end web gateway. Shown
+  is PRR calculated from the reports taken up to the year on the
+  x-axis.}
+\label{fig:prr}
+\end{figure}
 
 There are several key differences between the O\textsc{ffsides} and
 T\textsc{wosides} databases and nSides. The updated algorithm uses a
@@ -200,7 +209,7 @@ As mentioned previously, the task of fully populating the back-end
 database for multiple drug interactions quickly becomes
 intractable. We show how the number of models to compute for the
 interaction of two and three drugs scales with the number of total
-drugs in Figure~\ref{fig:drug_interactions}.
+drugs in Fig.~\ref{fig:drug_interactions}.
 
 TODO: Figure with number of drugs (x-axis) and number of models that need to be computed (y-axis)
 
