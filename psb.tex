@@ -72,7 +72,9 @@ detecting drug adverse events during and after the drug approval
 process (pharmacovigilance). However, pharmacovigilance algorithms
 often lead to many false positive and false negative findings due to
 issues of confounding, and detection of drug-drug interactions is an
-even greater challenge. When adverse reactions are caused by three or more drugs taken simultaneously, the problem quickly becomes computationally intractable. We previously developed databases for
+even greater challenge. When adverse reactions are caused by three or
+more drugs taken simultaneously, the problem quickly becomes
+computationally intractable. We previously developed databases for
 off-label drug effects (O\textsc{ffsides}) and drug interactions
 (T\textsc{wosides}) using FAERS that account for these limitations
 using a novel Statistical Correction for Uncharacterized Bias
@@ -100,7 +102,8 @@ gateway. Additionally, using consistent algorithms across
 spontaneous reporting systems allows researchers to evaluate drug
 effect differences and bias due to drug approval process differences.
 
-The computational infrastructure with instructions can be found on GitHub, at https://github.com/tatonetti-lab/nsides.
+The computational infrastructure with instructions can be found on
+GitHub, at https://github.com/tatonetti-lab/nsides.
 
 
 \section{Data Sources}
@@ -130,14 +133,15 @@ disproportionality analysis by comparing the observed reporting
 frequency of a drug and outcome to the expected reporting frequency of
 all other drugs and the outcome. The metric is known as a Proportional
 Reporting Ratio (PRR). If the outcome occurred by chance, the
-frequencies will be equal and the PRR will be one. If the PRR is significantly greater than one, the null hypothesis is rejected. To reduce sampling
-variance and selection bias, propensity score matching is implemented
-to form the groups used in the disproportionality analysis. This
-procedure, known as SCRUB, matches cases and controls between patients
-exposed and not exposed to a particular drug (O\textsc{ffsides}) or
-two drugs (T\textsc{wosides}) to mitigate confounding biases. Once
-cases and controls are matched, the PRR for various side effects are
-calculated.
+frequencies will be equal and the PRR will be one. If the PRR is
+significantly greater than one, the null hypothesis is rejected. To
+reduce sampling variance and selection bias, propensity score matching
+is implemented to form the groups used in the disproportionality
+analysis. This procedure, known as SCRUB, matches cases and controls
+between patients exposed and not exposed to a particular drug
+(O\textsc{ffsides}) or two drugs (T\textsc{wosides}) to mitigate
+confounding biases. Once cases and controls are matched, the PRR for
+various side effects are calculated.
 
 There are several key differences between the O\textsc{ffsides} and
 T\textsc{wosides} databases and nSides. The updated algorithm uses a
@@ -153,7 +157,8 @@ more robust computational infrastructure is required.
 
 Populating the nSides database requires the SCRUB procedure to be run
 for each drug or combination of drugs individually to identify
-appropriate cases and controls. Once we have identified cases and controls, we then needed to calculate PRR values over a range of side
+appropriate cases and controls. Once we have identified cases and
+controls, we then needed to calculate PRR values over a range of side
 effects. Since the AEOLUS dataset contains $\approx$4,000 drugs,
 $\approx$5,000,000 reports, and $\approx$8,000 effects to analyze, a
 computational challenge emerges.  To deal with this challenge, we
@@ -162,23 +167,28 @@ Columbia University's computing cluster, Habanero. The OSG provides
 access to computing resources for research in the United States, free
 of charge. The computing facilities are located at over 100 sites
 spanning the United States, primarily at universities and national
-laboratories. The computing infrastructure we present is optimized to work on
-the OSG to increase the portability of the infrastructure to other
-spontaneous reporting systems, but our use of Habanero demostrates that it can be easily adapted to other distributed computing platforms as well.
+laboratories. The computing infrastructure we present is optimized to
+work on the OSG to increase the portability of the infrastructure to
+other spontaneous reporting systems, but our use of Habanero
+demostrates that it can be easily adapted to other distributed
+computing platforms as well.
 
 Initially, we populate the nSides database with single drug
-effects. To do this, we learn a deep neural network model and a logistic
-regression model for each of the $\approx$4,500 unique
-drugs in the AEOLUS dataset. We learn the models using the two scientific computing libraries
-TensorFlow and scikit-learn,
-respectively. The computation involved in generating the deep neural network model
-is more intensive than that of the more traditional logistic regression
+effects. To do this, we learn a deep neural network model and a
+logistic regression model for each of the $\approx$4,500 unique drugs
+in the AEOLUS dataset. We learn the models using the two scientific
+computing libraries TensorFlow and scikit-learn, respectively. The
+computation involved in generating the deep neural network model is
+more intensive than that of the more traditional logistic regression
 model, such as those used in the creation of O\textsc{ffsides} and
-T\textsc{wosides}. As a result, we found it necessary to construct a more robust computational infrastructure.
+T\textsc{wosides}. As a result, we found it necessary to construct a
+more robust computational infrastructure.
 
-As mentioned previously, the task of fully populating the back-end database for multiple drug interactions quickly
-becomes intractable. We show how the number of models to compute for the interaction of two
-and three drugs scales with the number of total drugs in Figure~\ref{fig:drug_interactions}.
+As mentioned previously, the task of fully populating the back-end
+database for multiple drug interactions quickly becomes
+intractable. We show how the number of models to compute for the
+interaction of two and three drugs scales with the number of total
+drugs in Figure~\ref{fig:drug_interactions}.
 
 TODO: Figure with number of drugs (x-axis) and number of models that need to be computed (y-axis)
 
@@ -224,27 +234,39 @@ Generating a model for an individual drug or drug combination involves the follo
 \begin{enumerate}
 \item {\it Data preparation}: Dimensional reduction of the complete AEOLUS dataset to reduce computational complexity of generating models. To do this, we only consider co-reported drugs that appear in at least 1 report
 \item {\it Model generation}: Generate 20 deep learning and logistic regression models per drug using different subsets of exposed and non-exposed reports. This is done to increase generality of the model.
-\item {\it Model evaluation}: Use scores generated by models to perform propensity score matching, use propensity score matched cases and controls to calculate side effect PRR values.
+\item {\it Model evaluation}: Use scores generated by models to perform propensity score matching, use propensity score matched cases and controls to calculate side effect PRR values. For comparison, PRR values are also generated without propensity score matching.
 \item Populate nSides back-end MongoDB database.
 \end{enumerate}
 
-Steps (1) through (3) are performed in a grid computing environment and (4) is dependent on the hosting structure of the MongoDB back-end.
+Steps (1) through (3) are performed in a grid computing environment in
+with the DAG strategy, shown in Fig.~\ref{fig:dag}.  Step (4) is
+dependent on the hosting structure of the MongoDB back-end.
 
-TODO: DAG Figure to be referenced in Distributed Computing Strategy and Computational Structure
+\begin{figure}[h]
+\centerline{\includegraphics[width=\textwidth]{dag}}
+\caption{Computational structure employed on distributed computing
+  systems. First the data for a particular drug or drug combination is
+  pre-processed, then 20 deep learning and logistic regression models
+  are generated for that specific drug or drug combination and finally
+  propensity score matching is performed to result in PRR values.}
+\label{fig:dag}
+\end{figure}
 
 
 \subsection{On-demand Interface}
-We originally performed testing of our methods manually on the two distributed computing servers using a command line interface and shell scripts. In order to improve the ease of job submission in the future,
+We originally performed testing of our methods manually on the two
+distributed computing servers using a command line interface and shell
+scripts. In order to improve the ease of job submission in the future,
 we have developed a robust searchable shared-usage gateway to the OSG
 resources we have described previously. The gateway uses a
 three-tiered architecture consisting of browser-based user interfaces
 on the frontend, the OSG job submission system on the backend, and
 middleware to facilitate communication between the other two
-components. We deploy the user interfaces using an application written using the Python Flask
-framework, which then access a variety of web services that constitute
-the middle tier of the gateway. These web services are arranged in a
-way that allows a heterogeneous collection of resources to be accessed
-remotely in a uniform fashion.
+components. We deploy the user interfaces using an application written
+using the Python Flask framework, which then access a variety of web
+services that constitute the middle tier of the gateway. These web
+services are arranged in a way that allows a heterogeneous collection
+of resources to be accessed remotely in a uniform fashion.
 
 Additionally, we have bundled the user interface frontend alongside a
 RESTful Web API (Application Programming Interface) that allows
@@ -261,27 +283,29 @@ notifications.
 Creating an open-source computing infrastructure for mining and
 presenting side effect significances from spontaneous reporting
 systems has great potential for improving pharmacovigilance. By using
-the same algorithm across many systems, we have demonstrated that it is possible to evaluate
-drug effect significance differences which can be used to reduce the
-potential of adverse drug effects.
+the same algorithm across many systems, we have demonstrated that it
+is possible to evaluate drug effect significance differences which can
+be used to reduce the potential of adverse drug effects.
 
 Due to dataset restrictions, it is not always possible to incorporate
 spontaneous reporting system data other than FAERS directly. For
 example, EudraVigilance data is only available to academic
-institutions within the European Union. Using our infrastructure, it is possible for researchers with access to
-EudraVigilance to form a separate version of nSides which can be
-compared to the version made with FAERS data.
+institutions within the European Union. Using our infrastructure, it
+is possible for researchers with access to EudraVigilance to form a
+separate version of nSides which can be compared to the version made
+with FAERS data.
 
 \section{Acknowledgements}
 R.S.V., J.D.R., T.L., V.N., and N.P.T. are supported by grants from
 the National Institutes of Health, NIGMS R01GM107145 and NCATS
 OT3TR002027. R.S.V. and N.P.T. are also supported by the Herbert
 Irving Fellowship. This research is done using resources provided by
-the Open Science Grid~\cite{pordes2007open, sfiligoi2009pilot}, which is supported by the
-National Science Foundation award 1148698, and the U.S. Department of
-Energy's Office of Science.  This research is also supported by the
-Science Gateways Community Institute's Extended Developer Support
-program, funded by the National Science Foundation award 1547611.
+the Open Science Grid~\cite{pordes2007open, sfiligoi2009pilot}, which
+is supported by the National Science Foundation award 1148698, and the
+U.S. Department of Energy's Office of Science.  This research is also
+supported by the Science Gateways Community Institute's Extended
+Developer Support program, funded by the National Science Foundation
+award 1547611.
 
 
 
