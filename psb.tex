@@ -282,8 +282,8 @@ dependent on the hosting structure of the MongoDB back-end.
 We originally performed testing of our methods manually on the two
 distributed computing servers using a command line interface and shell
 scripts. In order to improve the ease of job submission in the future,
-we have developed a robust searchable shared-usage gateway to the OSG
-resources we have described previously. The gateway uses a
+we developed a robust searchable shared-usage gateway to the OSG
+resources we described previously. The gateway uses a
 three-tiered architecture consisting of browser-based user interfaces
 on the frontend, the OSG job submission system on the backend, and
 middleware to facilitate communication between the other two
@@ -293,7 +293,7 @@ services that constitute the middle tier of the gateway. These web
 services are arranged in a way that allows a heterogeneous collection
 of resources to be accessed remotely in a uniform fashion.
 
-Additionally, we have bundled the user interface frontend alongside a
+Additionally, we bundled the user interface frontend alongside a
 RESTful Web API (Application Programming Interface) that allows
 authenticated users to submit jobs programmatically. This API is
 implemented using the Agave tenant service~\cite{dooley2012agave}---a
@@ -319,6 +319,13 @@ institutions within the European Union. Using our infrastructure, it
 is possible for researchers with access to EudraVigilance to form a
 separate version of nSides which can be compared to the version made
 with FAERS data.
+
+The method we present can be used with other types of data. By not
+using a proprietary data format, the infrastructure presented can be
+adapted to work with other vigilance systems, claims data, and
+electronic health records data. By doing these separately, bias of
+each data type can be assessed by comparison and predictions from
+spontaneous reporting systems can be corroborated.
 
 \section{Acknowledgements}
 R.S.V., J.D.R., T.L., V.N., and N.P.T. are supported by grants from
