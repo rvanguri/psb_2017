@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.16)  1 AUG 2017 09:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.16)  1 AUG 2017 16:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -320,15 +320,20 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [3]
 Package epstopdf Info: Source file: <drug_interactions.eps>
-(epstopdf)                    date: 2017-07-31 21:33:45
-(epstopdf)                    size: 20547 bytes
+(epstopdf)                    date: 2017-08-01 16:52:31
+(epstopdf)                    size: 24006 bytes
 (epstopdf)             Output file: <drug_interactions-eps-converted-to.pdf>
 (epstopdf)                    date: 2017-07-31 21:36:11
 (epstopdf)                    size: 17461 bytes
 (epstopdf)             Command: <repstopdf --outfile=drug_interactions-eps-conv
 erted-to.pdf drug_interactions.eps>
 (epstopdf)             \includegraphics on input line 215.
-Package epstopdf Info: Output file is already uptodate.
+runsystem(repstopdf --outfile=drug_interactions-eps-converted-to.pdf drug_inter
+actions.eps)...executed safely (allowed).
+
+Package epstopdf Info: Result file: <drug_interactions-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-08-01 16:53:04
+(epstopdf)                    size: 19503 bytes.
  <drug_interactions-eps-converted-to.pdf, id=24, 578.16pt x 397.485pt>
 File: drug_interactions-eps-converted-to.pdf Graphic file (type pdf)
 
@@ -351,7 +356,7 @@ Package epstopdf Info: Source file: <dag.eps>
 ag.eps>
 (epstopdf)             \includegraphics on input line 271.
 Package epstopdf Info: Output file is already uptodate.
-<dag-eps-converted-to.pdf, id=70, 1112.155pt x 314.17375pt>
+<dag-eps-converted-to.pdf, id=73, 1112.155pt x 314.17375pt>
 File: dag-eps-converted-to.pdf Graphic file (type pdf)
 
 <use dag-eps-converted-to.pdf>
@@ -377,7 +382,7 @@ Here is how much of TeX's memory you used:
  6634 multiletter control sequences out of 15000+600000
  12140 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,6n,26p,573b,244s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,6n,27p,573b,244s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></
@@ -390,9 +395,9 @@ local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loc
 al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
 l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local
 /texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on psb.pdf (8 pages, 269832 bytes).
+Output written on psb.pdf (8 pages, 271398 bytes).
 PDF statistics:
- 132 PDF objects out of 1000 (max. 8388607)
+ 135 PDF objects out of 1000 (max. 8388607)
  70 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
