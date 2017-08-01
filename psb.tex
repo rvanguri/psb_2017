@@ -98,11 +98,11 @@ Fig.~\ref{fig:workflow}.
 
 \begin{figure}[h]
 \centerline{\includegraphics[width=0.9\textwidth]{workflow}}
-\caption{A diagram representation of the computational infrastructure
+\caption{An image representation of the computational infrastructure
   presented. Spontaneous reporting system data is processed on grid
-  computing systems to generate an adverse event database with a web
-  front-end which has an on-demand interface to request drug
-  combination adverse reactions. }
+  computing systems to generate an adverse event database (lower left) with a web
+  front-end (lower right) which has an on-demand interface (top center) to request drug
+  combination adverse reactions. User queries are handled by a set of middleware tools and and Agave API (bottom center).}
 \label{fig:workflow}
 \end{figure}
 
@@ -158,8 +158,8 @@ Fig.~\ref{fig:prr}.
 
 \begin{figure}[h]
 \centerline{\includegraphics[width=0.7\textwidth]{prr}}
-\caption{Example result using the nSides front-end web gateway. Shown
-  is PRR calculated from the reports taken up to the year on the
+\caption{Example result using the nSides web gateway front-end. Shown
+  is the PRR calculated from all reports dated on or before the year listed on the
   x-axis.}
 \label{fig:prr}
 \end{figure}
@@ -211,7 +211,11 @@ intractable. We show how the number of models to compute for the
 interaction of two and three drugs scales with the number of total
 drugs in Fig.~\ref{fig:drug_interactions}.
 
-TODO: Figure with number of drugs (x-axis) and number of models that need to be computed (y-axis)
+\begin{figure}[h]
+\centerline{\includegraphics[width=5in, scale=0.7]{drug_interactions}}
+\caption{Plot of the number of drugs in an interaction versus the number of unique drug combinations in AEOLUS with at least 10 reports available. The vertical axis is horizontal, demonstrating the approximately exponential increase in models to compute in the number of drugs interacting. Values above each bar indicate the ``efficiency'' of the nSides approach: the percentage of all drug combinations with $\geq$ 10 available reports.}
+\label{fig:drug_interactions}
+\end{figure}
 
 \subsubsection{Distributed Computing Strategy}
 The combinatorial complexity of running all jobs scales on the order
@@ -265,10 +269,10 @@ dependent on the hosting structure of the MongoDB back-end.
 
 \begin{figure}[h]
 \centerline{\includegraphics[width=\textwidth]{dag}}
-\caption{Computational structure employed on distributed computing
+\caption{Computational structure employed on both of the two distributed computing
   systems. First the data for a particular drug or drug combination is
-  pre-processed, then 20 deep learning and logistic regression models
-  are generated for that specific drug or drug combination and finally
+  pre-processed, then deep learning and logistic regression models (20 replicates of each)
+  are generated for that specific drug or drug combination, and finally
   propensity score matching is performed to result in PRR values.}
 \label{fig:dag}
 \end{figure}

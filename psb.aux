@@ -1,26 +1,36 @@
 \relax 
 \citation{Tatonetti2012}
-\citation{AEOLUS}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Data Sources}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces An image representation of the computational infrastructure presented. Spontaneous reporting system data is processed on grid computing systems to generate an adverse event database (lower left) with a web front-end (lower right) which has an on-demand interface (top center) to request drug combination adverse reactions. User queries are handled by a set of middleware tools and and Agave API (bottom center).}}{}}
+\newlabel{fig:workflow}{{1}{}}
+\citation{AEOLUS}
 \citation{Tatonetti2012}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Data Sources}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Methods}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Adverse Event Detection Algorithm}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Example result using the nSides web gateway front-end. Shown is the PRR calculated from all reports dated on or before the year listed on the x-axis.}}{}}
+\newlabel{fig:prr}{{2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Computational Challenge}{}}
 \citation{beowulfbook-condor}
 \citation{slurm}
 \citation{dagman}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Plot of the number of drugs in an interaction versus the number of unique drug combinations in AEOLUS with at least 10 reports available. The vertical axis is horizontal, demonstrating the approximately exponential increase in models to compute in the number of drugs interacting. Values above each bar indicate the ``efficiency'' of the nSides approach: the percentage of all drug combinations with $\geq $ 10 available reports.}}{}}
+\newlabel{fig:drug_interactions}{{3}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Distributed Computing Strategy}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Computational Structure}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Computational structure employed on both of the two distributed computing systems. First the data for a particular drug or drug combination is pre-processed, then deep learning and logistic regression models (20 replicates of each) are generated for that specific drug or drug combination, and finally propensity score matching is performed to result in PRR values.}}{}}
+\newlabel{fig:dag}{{4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}On-demand Interface}{}}
 \citation{dooley2012agave}
+\citation{pordes2007open,sfiligoi2009pilot}
 \bibstyle{ws-procs11x85}
 \bibdata{ws-pro-sample}
 \bibcite{Tatonetti2012}{1}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}On-demand Interface}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Discussion}{}}
 \bibcite{AEOLUS}{2}
 \bibcite{beowulfbook-condor}{3}
 \bibcite{slurm}{4}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Discussion}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Acknowledgements}{}}
 \bibcite{dagman}{5}
 \bibcite{dooley2012agave}{6}
-\newlabel{eof}{{4}{}}
+\newlabel{eof}{{5}{}}
