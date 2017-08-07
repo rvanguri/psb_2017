@@ -115,7 +115,12 @@ spontaneous reporting systems allows researchers to evaluate drug
 effect differences and bias due to drug approval process differences.
 
 The computational infrastructure with instructions can be found on
-GitHub, at https://github.com/tatonetti-lab/nsides.
+GitHub:
+\begin{itemize}
+\item Front-end \url{https://github.com/tatonetti-lab/nsides}
+\item Middleware \url{https://github.com/tatonetti-lab/nsides/tree/master/job_api}
+\item Back-end \url{https://github.com/tatonetti-lab/nsides/tree/master/condor}
+\end{itemize}
 
 
 \section{Data Sources}
@@ -131,6 +136,10 @@ other spontaneous reporting systems to be adapted to a consistent
 format used on the AEOLUS dataset. Furthermore, this strategy facilitates
 semantic interoperability with other informatics tools, allowing nSides to be
 more easily incorporated into complex workflows and analysis pipelines.
+
+However, since nSides is designed to work generically on reporting
+system data, it is not required for the data to use particular
+vocabularies.
 
 \section{Methods}
 In this paper, we focus on the distributed computing setup used to learn and visualize the results of nSides. Before describing this setup, we will briefly describe the algorithmic approach used to learn the nSides database.
@@ -323,10 +332,21 @@ potential of adverse drug effects.
 Due to dataset restrictions, it is not always possible to incorporate
 spontaneous reporting system data other than FAERS directly. For
 example, EudraVigilance data is only available to academic
-institutions within the European Union. Using our infrastructure, it
-is possible for researchers with access to EudraVigilance to form a
-separate version of nSides which can be compared to the version made
-with FAERS data.
+institutions within the European Union.  As a proof of concept, we
+were able to compute adverse reactions for the drug dabigatran using
+EudraVigilance data. This was done by using a subset of the data with
+randomized report, drug, and outcome identifiers. The randomized data
+was then adapted to CSV format and side effect significances were
+calculated by following the instructions on the nSides back-end
+GitHub. 
+
+Using our infrastructure, it is possible for researchers with access
+to EudraVigilance to compute an adverse event database using all
+reported drugs to create a separate version of nSides which can be
+compared to the version made with FAERS data. Furthermore, by
+randomizing data identifiers in the EudraVigilance dataset, it can
+also be possible to use large-scale public computing resources to
+compute the drug models.
 
 The method we present can be used with other types of data. By not
 using a proprietary data format, the infrastructure presented can be
