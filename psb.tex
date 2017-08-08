@@ -84,11 +84,16 @@ nSides also contains a front-end component consisting of a web gateway
 (http://nsides.io/) accessible to researchers, clinicians and patients
 alike.
 
-We present the computational infrastructure used to populate the
-nSides back-end database, designed to be executed on grid computing
-systems. Additionally, we present middleware used to communicate
-between users and the back-end database.  The communication is done
-via an on-demand interface where users can request the nSides back-end
+We present the comprehensive computational framework which forms
+nSides. The framework includes a front-end web gateway as well as the
+infrastructure used to populate the back-end database.  To handle the
+large number of computations involved, the back-end database
+infrastructure is designed to be executed on grid computing
+systems. We present the necessary code to run the infrastructure on
+two popular distributed computing platforms: HTCondor and
+Slurm. Additionally, we present middleware used to communicate between
+users and the back-end database.  The communication is done via an
+on-demand interface where users can request the nSides back-end
 database be populated with a specific drug combination. Drug
 combinations must be calculated on an on-demand basis due to the very
 high number of drug combinations possible in spontaneous reporting
@@ -142,7 +147,11 @@ system data, it is not required for the data to use particular
 vocabularies.
 
 \section{Methods}
-In this paper, we focus on the distributed computing setup used to learn and visualize the results of nSides. Before describing this setup, we will briefly describe the algorithmic approach used to learn the nSides database.
+In this paper, we describe the front-end web gateway, the distributed
+computing setup used to learn and compute the results of nSides, and
+the middleware used to facilitate communication between the front and
+back ends. Before describing this setup, we will briefly describe the
+algorithmic approach used to learn the nSides database.
 
 \subsection{Adverse Event Detection Algorithm}
 The algorithm used to develop the databases comprising nSides is an
@@ -182,6 +191,21 @@ models, the computational power required to populate the nSides
 back-end database is much greater. Since nSides is not designed to be
 limited to effects of single and interactions of two drugs, a much
 more robust computational infrastructure is required.
+
+\subsection{Front-end Web Gateway}
+The public facing front-end web gateway provides access to the nSides
+results. When a user selects an available drug, a plot of the PRR of
+the top side effect is shown versus the report year, similar to
+Fig.~\ref{fig:prr}.  The top side effect is defined as the effect
+having the tightest confidence interval. The top 10 side effects are
+shown in a drop-down list next to the drug name. The user can type to
+in the selection box to retrieve the result for any available side
+effect. To retrieve the result of a drug interaction, the user simply
+selects multiple drugs in the drug box. If there are no results in the
+database for that particular combination, it can be requested via an
+on-demand interface which requests that a model is generated via
+distributed computing resources.  This process is described in
+Section~\ref{sec:on-demand}.
 
 \subsection{Computational Challenge}
 
@@ -295,7 +319,7 @@ dependent on the hosting structure of the MongoDB back-end.
 \end{figure}
 
 
-\subsection{On-demand Interface}
+\subsection{On-demand Interface}\label{sec:on-demand}
 We originally performed testing of our methods manually on the two
 distributed computing servers using a command line interface and shell
 scripts. In order to improve the ease of job submission in the future,
@@ -333,12 +357,15 @@ Due to dataset restrictions, it is not always possible to incorporate
 spontaneous reporting system data other than FAERS directly. For
 example, EudraVigilance data is only available to academic
 institutions within the European Union.  As a proof of concept, we
-were able to compute adverse reactions for the anticoagulant drug drug dabigatran using
-EudraVigilance data. This was done by using a subset of the data with
-randomized report, drug, and outcome identifiers. The randomized data
-was then adapted to CSV format and side effect significances were
-calculated by following the instructions on the nSides back-end
-GitHub. Due to data licensing restrictions, we are not yet able to include the EudraVigilance results in the public web gateway, although we are currently working on a protocol to allow the inclusion of these elements in future revisions of the gateway.
+were able to compute adverse reactions for the anticoagulant drug drug
+dabigatran using EudraVigilance data. This was done by using a subset
+of the data with randomized report, drug, and outcome identifiers. The
+randomized data was then adapted to CSV format and side effect
+significances were calculated by following the instructions on the
+nSides back-end GitHub. Due to data licensing restrictions, we are not
+yet able to include the EudraVigilance results in the public web
+gateway, although we are currently working on a protocol to allow the
+inclusion of these elements in future revisions of the gateway.
 
 Using our infrastructure, it is possible for researchers with access
 to EudraVigilance to compute an adverse event database using all
@@ -355,7 +382,21 @@ electronic health records data. By doing these separately, bias of
 each data type can be assessed by comparison and predictions from
 spontaneous reporting systems can be corroborated.
 
-Although we have designed nSides to be used by any research group who is interested, we intend to maintain the application and web gateway at \url{http://nsides.io} permanently. We chose to host the gateway on a dedicated domain, since institutional URLs have a tendency to change over time. The gateway is currently hosted on a virtual Linux server running on Amazon Web Services' EC2 cloud server platform.
+Although we have designed nSides to be used by any research group who
+is interested, we intend to maintain the application and web gateway
+at \url{http://nsides.io} permanently. We chose to host the gateway on
+a dedicated domain, since institutional URLs have a tendency to change
+over time. The gateway is currently hosted on a virtual Linux server
+running on Amazon Web Services' EC2 cloud server platform.
+
+The comprehensive nSides framework presented integrates a diverse
+group of technologies including JavaScript (React and D3.js),
+distributed computing platforms (HTCondor and SLURM), and cloud-based
+APIs (Agave). Many of these technologies are intended for a wide array
+of scientific computing tasks.  By making the framework completely
+open source, we hope to increase awareness of these tools.
+Additionally, we designed nSides to be agnostic to a specific data
+source to facilitate drug effect discovery across many systems.
 
 \section{Acknowledgements}
 R.S.V., J.D.R., T.L., V.N., and N.P.T. are supported by grants from
