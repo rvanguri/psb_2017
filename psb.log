@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.16)  1 AUG 2017 17:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.16)  7 AUG 2017 20:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -305,47 +305,35 @@ Package epstopdf Info: Source file: <prr.eps>
 (epstopdf)                    size: 31938 bytes
 (epstopdf)             Command: <repstopdf --outfile=prr-eps-converted-to.pdf p
 rr.eps>
-(epstopdf)             \includegraphics on input line 160.
+(epstopdf)             \includegraphics on input line 169.
 Package epstopdf Info: Output file is already uptodate.
 
 <prr-eps-converted-to.pdf, id=19, 842.14626pt x 401.5pt>
 File: prr-eps-converted-to.pdf Graphic file (type pdf)
 
 <use prr-eps-converted-to.pdf>
-Package pdftex.def Info: prr-eps-converted-to.pdf used on input line 160.
+Package pdftex.def Info: prr-eps-converted-to.pdf used on input line 169.
 (pdftex.def)             Requested size: 333.88625pt x 159.18195pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[3]
+ [3] [4 <./prr-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <drug_interactions.eps>
 (epstopdf)                    date: 2017-08-01 17:06:03
 (epstopdf)                    size: 23990 bytes
 (epstopdf)             Output file: <drug_interactions-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-08-01 16:53:04
-(epstopdf)                    size: 19503 bytes
+(epstopdf)                    date: 2017-08-01 17:06:31
+(epstopdf)                    size: 19511 bytes
 (epstopdf)             Command: <repstopdf --outfile=drug_interactions-eps-conv
 erted-to.pdf drug_interactions.eps>
-(epstopdf)             \includegraphics on input line 215.
-runsystem(repstopdf --outfile=drug_interactions-eps-converted-to.pdf drug_inter
-actions.eps)...executed safely (allowed).
+(epstopdf)             \includegraphics on input line 224.
+Package epstopdf Info: Output file is already uptodate.
 
-Package epstopdf Info: Result file: <drug_interactions-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-08-01 17:06:31
-(epstopdf)                    size: 19511 bytes.
- <drug_interactions-eps-converted-to.pdf, id=24, 578.16pt x 397.485pt>
+<drug_interactions-eps-converted-to.pdf, id=32, 578.16pt x 397.485pt>
 File: drug_interactions-eps-converted-to.pdf Graphic file (type pdf)
 
 <use drug_interactions-eps-converted-to.pdf>
 Package pdftex.def Info: drug_interactions-eps-converted-to.pdf used on input l
-ine 215.
+ine 224.
 (pdftex.def)             Requested size: 404.70924pt x 278.2376pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[4 <./prr-eps-converted-to.pdf>] [5 <./drug_interactions-eps-converted-to.pdf>]
+ [5 <./drug_interactions-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <dag.eps>
 (epstopdf)                    date: 2017-07-31 19:26:12
 (epstopdf)                    size: 30800 bytes
@@ -354,35 +342,39 @@ Package epstopdf Info: Source file: <dag.eps>
 (epstopdf)                    size: 14475 bytes
 (epstopdf)             Command: <repstopdf --outfile=dag-eps-converted-to.pdf d
 ag.eps>
-(epstopdf)             \includegraphics on input line 271.
+(epstopdf)             \includegraphics on input line 288.
 Package epstopdf Info: Output file is already uptodate.
-<dag-eps-converted-to.pdf, id=73, 1112.155pt x 314.17375pt>
+ <dag-eps-converted-to.pdf, id=74, 1112.155pt x 314.17375pt>
 File: dag-eps-converted-to.pdf Graphic file (type pdf)
 
 <use dag-eps-converted-to.pdf>
-Package pdftex.def Info: dag-eps-converted-to.pdf used on input line 271.
+Package pdftex.def Info: dag-eps-converted-to.pdf used on input line 288.
 (pdftex.def)             Requested size: 476.98244pt x 134.74211pt.
- [6 <./dag-eps-converted-to.pdf>]
-
-LaTeX Warning: Citation `pordes2007open' on page  undefined on input line 335.
 
 
-LaTeX Warning: Citation `sfiligoi2009pilot' on page  undefined on input line 33
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[6] [7 <./dag-eps-converted-to.pdf>]
+
+LaTeX Warning: Citation `pordes2007open' on page  undefined on input line 365.
+
+
+LaTeX Warning: Citation `sfiligoi2009pilot' on page  undefined on input line 36
 5.
 
-(./psb.bbl [7]) [8] (./psb.aux)
+(./psb.bbl) [8] (./psb.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 3167 strings out of 493033
- 40577 string characters out of 6134139
+ 3169 strings out of 493033
+ 40598 string characters out of 6134139
  106408 words of memory out of 5000000
- 6634 multiletter control sequences out of 15000+600000
- 12140 words of font info for 46 fonts, out of 8000000 for 9000
+ 6635 multiletter control sequences out of 15000+600000
+ 12309 words of font info for 47 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,6n,27p,573b,242s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,6n,26p,644b,228s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></
@@ -394,11 +386,12 @@ r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/
 local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loc
 al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
 l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local
-/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on psb.pdf (8 pages, 271666 bytes).
+/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/
+texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on psb.pdf (8 pages, 278816 bytes).
 PDF statistics:
- 135 PDF objects out of 1000 (max. 8388607)
- 70 compressed objects within 1 object stream
+ 139 PDF objects out of 1000 (max. 8388607)
+ 73 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

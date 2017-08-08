@@ -1,4 +1,4 @@
-%\documentclass[wsdraft]{ws-procs11x85}
+
 
 \documentclass{ws-procs11x85}
 \usepackage{ws-procs-thm}           % comment this line when `amsthm / theorem / ntheorem` package is used
@@ -117,9 +117,9 @@ effect differences and bias due to drug approval process differences.
 The computational infrastructure with instructions can be found on
 GitHub:
 \begin{itemize}
-\item Front-end \url{https://github.com/tatonetti-lab/nsides}
-\item Middleware \url{https://github.com/tatonetti-lab/nsides/tree/master/job_api}
-\item Back-end \url{https://github.com/tatonetti-lab/nsides/tree/master/condor}
+\item Front-end \url{https://github.com/tatonetti-lab/nsides/tree/v1.0-alpha}
+\item Middleware \url{https://github.com/tatonetti-lab/nsides/tree/v1.0-alpha/job_api}
+\item Back-end \url{https://github.com/tatonetti-lab/nsides/tree/v1.0-alpha/condor}
 \end{itemize}
 
 
@@ -333,7 +333,7 @@ Due to dataset restrictions, it is not always possible to incorporate
 spontaneous reporting system data other than FAERS directly. For
 example, EudraVigilance data is only available to academic
 institutions within the European Union.  As a proof of concept, we
-were able to compute adverse reactions for the drug dabigatran using
+were able to compute adverse reactions for the anticoagulant drug drug dabigatran using
 EudraVigilance data. This was done by using a subset of the data with
 randomized report, drug, and outcome identifiers. The randomized data
 was then adapted to CSV format and side effect significances were
@@ -354,6 +354,8 @@ adapted to work with other vigilance systems, claims data, and
 electronic health records data. By doing these separately, bias of
 each data type can be assessed by comparison and predictions from
 spontaneous reporting systems can be corroborated.
+
+Although we have designed nSides to be used by any research group who is interested, we intend to maintain the application and web gateway at \url{http://nsides.io} permanently. We chose to host the gateway on a dedicated domain, since institutional URLs have a tendency to change over time. The gateway is currently hosted on a virtual Linux server running on Amazon Web Services' EC2 cloud server platform.
 
 \section{Acknowledgements}
 R.S.V., J.D.R., T.L., V.N., and N.P.T. are supported by grants from
