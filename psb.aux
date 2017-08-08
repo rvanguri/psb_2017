@@ -1,5 +1,7 @@
 \relax 
 \citation{Tatonetti2012}
+\citation{beowulfbook-condor}
+\citation{slurm}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces An image representation of the computational infrastructure presented. Spontaneous reporting system data is processed on grid computing systems to generate an adverse event database (lower left) with a web front-end (lower right) which has an on-demand interface (top center) to request drug combination adverse reactions. User queries are handled by a set of middleware tools and and Agave API (bottom center).}}{}}
 \newlabel{fig:workflow}{{1}{}}
@@ -10,27 +12,31 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Adverse Event Detection Algorithm}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Example result using the nSides web gateway front-end. Shown is the PRR calculated from all reports dated on or before the year listed on the x-axis.}}{}}
 \newlabel{fig:prr}{{2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Computational Challenge}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Front-end Web Gateway}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Computational Challenge}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Plot of the number of drugs in an interaction versus the number of unique drug combinations in AEOLUS with at least 10 reports available. The vertical axis is shown on a logarithmic scale, demonstrating the approximately exponential increase in models to compute in the number of drugs interacting. Values above each bar indicate the ``efficiency'' of the nSides approach: the percentage of all drug combinations with $\geq $ 10 available reports. Results for 4 drugs were approximated due to computational complexity.}}{}}
+\newlabel{fig:drug_interactions}{{3}{}}
 \citation{beowulfbook-condor}
 \citation{slurm}
 \citation{dagman}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Plot of the number of drugs in an interaction versus the number of unique drug combinations in AEOLUS with at least 10 reports available. The vertical axis is shown on a logarithmic scale, demonstrating the approximately exponential increase in models to compute in the number of drugs interacting. Values above each bar indicate the ``efficiency'' of the nSides approach: the percentage of all drug combinations with $\geq $ 10 available reports. Results for 4 drugs were approximated due to computational complexity.}}{}}
-\newlabel{fig:drug_interactions}{{3}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Distributed Computing Strategy}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Computational Structure}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}On-demand Interface}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}Distributed Computing Strategy}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Computational Structure}{}}
 \citation{dooley2012agave}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Computational structure employed on both of the two distributed computing systems. First the data for a particular drug or drug combination is pre-processed, then deep learning and logistic regression models (20 replicates of each) are generated for that specific drug or drug combination, and finally propensity score matching is performed to result in PRR values.}}{}}
 \newlabel{fig:dag}{{4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}On-demand Interface}{}}
+\newlabel{sec:on-demand}{{3.5}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Discussion}{}}
 \citation{pordes2007open,sfiligoi2009pilot}
 \bibstyle{ws-procs11x85}
 \bibdata{ws-pro-sample}
 \bibcite{Tatonetti2012}{1}
-\bibcite{AEOLUS}{2}
-\bibcite{beowulfbook-condor}{3}
-\bibcite{slurm}{4}
+\bibcite{beowulfbook-condor}{2}
+\bibcite{slurm}{3}
+\bibcite{AEOLUS}{4}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Acknowledgements}{}}
 \bibcite{dagman}{5}
 \bibcite{dooley2012agave}{6}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Acknowledgements}{}}
+\bibcite{pordes2007open}{7}
+\bibcite{sfiligoi2009pilot}{8}
 \newlabel{eof}{{5}{}}

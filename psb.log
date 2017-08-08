@@ -1,9 +1,12 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.16)  7 AUG 2017 20:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.3.16)  8 AUG 2017 11:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**\nonstopmode\input psb.tex
-(./psb.tex (./ws-procs11x85.cls
+**psb.tex
+(./psb.tex
+LaTeX2e <2016/02/01>
+Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
+(./ws-procs11x85.cls
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \@emptytoks=\toks14
@@ -287,16 +290,17 @@ Package epstopdf Info: Source file: <workflow.eps>
 (epstopdf)                    size: 48181 bytes
 (epstopdf)             Command: <repstopdf --outfile=workflow-eps-converted-to.
 pdf workflow.eps>
-(epstopdf)             \includegraphics on input line 100.
+(epstopdf)             \includegraphics on input line 105.
 Package epstopdf Info: Output file is already uptodate.
 
 <workflow-eps-converted-to.pdf, id=9, 1212.53pt x 509.905pt>
 File: workflow-eps-converted-to.pdf Graphic file (type pdf)
 
 <use workflow-eps-converted-to.pdf>
-Package pdftex.def Info: workflow-eps-converted-to.pdf used on input line 100.
+Package pdftex.def Info: workflow-eps-converted-to.pdf used on input line 105.
 (pdftex.def)             Requested size: 429.28128pt x 180.52347pt.
  [2 <./workflow-eps-converted-to.pdf>]
+[3]
 Package epstopdf Info: Source file: <prr.eps>
 (epstopdf)                    date: 2017-07-31 19:26:12
 (epstopdf)                    size: 115565 bytes
@@ -305,16 +309,15 @@ Package epstopdf Info: Source file: <prr.eps>
 (epstopdf)                    size: 31938 bytes
 (epstopdf)             Command: <repstopdf --outfile=prr-eps-converted-to.pdf p
 rr.eps>
-(epstopdf)             \includegraphics on input line 169.
+(epstopdf)             \includegraphics on input line 178.
 Package epstopdf Info: Output file is already uptodate.
-
-<prr-eps-converted-to.pdf, id=19, 842.14626pt x 401.5pt>
+ <prr-eps-converted-to.pdf, id=25, 842.14626pt x 401.5pt>
 File: prr-eps-converted-to.pdf Graphic file (type pdf)
 
 <use prr-eps-converted-to.pdf>
-Package pdftex.def Info: prr-eps-converted-to.pdf used on input line 169.
+Package pdftex.def Info: prr-eps-converted-to.pdf used on input line 178.
 (pdftex.def)             Requested size: 333.88625pt x 159.18195pt.
- [3] [4 <./prr-eps-converted-to.pdf>]
+ [4 <./prr-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <drug_interactions.eps>
 (epstopdf)                    date: 2017-08-01 17:06:03
 (epstopdf)                    size: 23990 bytes
@@ -323,7 +326,7 @@ Package epstopdf Info: Source file: <drug_interactions.eps>
 (epstopdf)                    size: 19511 bytes
 (epstopdf)             Command: <repstopdf --outfile=drug_interactions-eps-conv
 erted-to.pdf drug_interactions.eps>
-(epstopdf)             \includegraphics on input line 224.
+(epstopdf)             \includegraphics on input line 248.
 Package epstopdf Info: Output file is already uptodate.
 
 <drug_interactions-eps-converted-to.pdf, id=32, 578.16pt x 397.485pt>
@@ -331,7 +334,7 @@ File: drug_interactions-eps-converted-to.pdf Graphic file (type pdf)
 
 <use drug_interactions-eps-converted-to.pdf>
 Package pdftex.def Info: drug_interactions-eps-converted-to.pdf used on input l
-ine 224.
+ine 248.
 (pdftex.def)             Requested size: 404.70924pt x 278.2376pt.
  [5 <./drug_interactions-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <dag.eps>
@@ -342,56 +345,44 @@ Package epstopdf Info: Source file: <dag.eps>
 (epstopdf)                    size: 14475 bytes
 (epstopdf)             Command: <repstopdf --outfile=dag-eps-converted-to.pdf d
 ag.eps>
-(epstopdf)             \includegraphics on input line 288.
+(epstopdf)             \includegraphics on input line 312.
 Package epstopdf Info: Output file is already uptodate.
- <dag-eps-converted-to.pdf, id=74, 1112.155pt x 314.17375pt>
+ <dag-eps-converted-to.pdf, id=72, 1112.155pt x 314.17375pt>
 File: dag-eps-converted-to.pdf Graphic file (type pdf)
 
 <use dag-eps-converted-to.pdf>
-Package pdftex.def Info: dag-eps-converted-to.pdf used on input line 288.
+Package pdftex.def Info: dag-eps-converted-to.pdf used on input line 312.
 (pdftex.def)             Requested size: 476.98244pt x 134.74211pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[6] [7 <./dag-eps-converted-to.pdf>]
-
-LaTeX Warning: Citation `pordes2007open' on page  undefined on input line 365.
-
-
-LaTeX Warning: Citation `sfiligoi2009pilot' on page  undefined on input line 36
-5.
-
-(./psb.bbl) [8] (./psb.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+[6] [7 <./dag-eps-converted-to.pdf>] (./psb.bbl [8]) [9] (./psb.aux) ) 
 Here is how much of TeX's memory you used:
  3169 strings out of 493033
- 40598 string characters out of 6134139
- 106408 words of memory out of 5000000
- 6635 multiletter control sequences out of 15000+600000
- 12309 words of font info for 47 fonts, out of 8000000 for 9000
+ 40602 string characters out of 6134139
+ 107423 words of memory out of 5000000
+ 6636 multiletter control sequences out of 15000+600000
+ 12000 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,6n,26p,644b,228s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></
-usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
-usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></us
-r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/
-local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loc
-al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
-l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local
-/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/
-texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on psb.pdf (8 pages, 279032 bytes).
+ 41i,6n,26p,625b,248s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/loc
+al/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/loca
+l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local
+/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/loca
+l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/loca
+l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local
+/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texliv
+e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/
+2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2
+015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on psb.pdf (9 pages, 276716 bytes).
 PDF statistics:
- 139 PDF objects out of 1000 (max. 8388607)
- 73 compressed objects within 1 object stream
+ 138 PDF objects out of 1000 (max. 8388607)
+ 72 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

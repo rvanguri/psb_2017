@@ -84,14 +84,14 @@ nSides also contains a front-end component consisting of a web gateway
 (http://nsides.io/) accessible to researchers, clinicians and patients
 alike.
 
-We present the comprehensive computational framework which forms
+Here we present the computational framework which forms
 nSides. The framework includes a front-end web gateway as well as the
 infrastructure used to populate the back-end database.  To handle the
 large number of computations involved, the back-end database
 infrastructure is designed to be executed on grid computing
-systems. We present the necessary code to run the infrastructure on
-two popular distributed computing platforms: HTCondor and
-Slurm. Additionally, we present middleware used to communicate between
+systems. We describe the necessary code to run the infrastructure on
+two popular distributed computing platforms: HTCondor~\cite{beowulfbook-condor} and
+Slurm~\cite{slurm}. Additionally, we present middleware used to communicate between
 users and the back-end database.  The communication is done via an
 on-demand interface where users can request the nSides back-end
 database be populated with a specific drug combination. Drug
@@ -193,12 +193,12 @@ limited to effects of single and interactions of two drugs, a much
 more robust computational infrastructure is required.
 
 \subsection{Front-end Web Gateway}
-The public facing front-end web gateway provides access to the nSides
-results. When a user selects an available drug, a plot of the PRR of
-the top side effect is shown versus the report year, similar to
-Fig.~\ref{fig:prr}.  The top side effect is defined as the effect
+The public facing front-end web gateway provides access to the results
+of an nSides query. When a user selects an available drug, a plot of the PRR of
+the top side effect is shown versus the report year (shown in
+Fig.~\ref{fig:prr}).  The top side effect is defined as the effect
 having the tightest confidence interval. The top 10 side effects are
-shown in a drop-down list next to the drug name. The user can type to
+shown in a drop-down list next to the drug name. The user can type
 in the selection box to retrieve the result for any available side
 effect. To retrieve the result of a drug interaction, the user simply
 selects multiple drugs in the drug box. If there are no results in the

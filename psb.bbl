@@ -4,10 +4,6 @@
 N.~P. Tatonetti, P.~P. Ye, R.~Daneshjou and R.~B. Altman, {\em Science
   Translational Medicine} {\bf 4}, 125ra31  (2012).
 
-\bibitem{AEOLUS}
-J.~M. Banda, L.~Evans, R.~S. Vanguri, N.~P. Tatonetti, P.~B. Ryan and N.~H.
-  Shah, {\em Scientific data} {\bf 3}  (2016).
-
 \bibitem{beowulfbook-condor}
 T.~Tannenbaum, D.~Wright, K.~Miller and M.~Livny, {C}ondor -- a distributed job
   scheduler, in {\em Beowulf Cluster Computing with {L}inux\/},  ed.
@@ -16,6 +12,10 @@ T.~Tannenbaum, D.~Wright, K.~Miller and M.~Livny, {C}ondor -- a distributed job
 \bibitem{slurm}
 M.~Jette and M.~Grondona, Slurm: Simple linux utility for resource management,
   in {\em ClusterWorld Conference and Expo\/}, JUN 2003.
+
+\bibitem{AEOLUS}
+J.~M. Banda, L.~Evans, R.~S. Vanguri, N.~P. Tatonetti, P.~B. Ryan and N.~H.
+  Shah, {\em Scientific data} {\bf 3}  (2016).
 
 \bibitem{dagman}
 P.~Couvares, T.~Kosar, A.~Roy, J.~Weber and K.~Wenger, Workflow in condor, in
@@ -26,5 +26,16 @@ P.~Couvares, T.~Kosar, A.~Roy, J.~Weber and K.~Wenger, Workflow in condor, in
 R.~Dooley, M.~Vaughn, D.~Stanzione, S.~Terry and E.~Skidmore,
   Software-as-a-service: The iplant foundation api, in {\em 5th IEEE Workshop
   on Many-Task Computing on Grids and Supercomputers\/}, NOV 2012.
+
+\bibitem{pordes2007open}
+R.~Pordes, D.~Petravick, B.~Kramer, D.~Olson, M.~Livny, A.~Roy, P.~Avery,
+  K.~Blackburn, T.~Wenaus, F.~W{\"u}rthwein {\em et~al.}, The open science
+  grid, in {\em Journal of Physics: Conference Series\/},  (1)2007.
+
+\bibitem{sfiligoi2009pilot}
+I.~Sfiligoi, D.~C. Bradley, B.~Holzman, P.~Mhashilkar, S.~Padhi and
+  F.~Wurthwein, The pilot way to grid resources using glideinwms, in {\em
+  Computer Science and Information Engineering, 2009 WRI World Congress on\/},
+  2009.
 
 \end{thebibliography}
